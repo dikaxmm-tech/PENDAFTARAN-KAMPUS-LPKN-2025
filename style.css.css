@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #00b4db, #0083b0);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+h1, h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1em;
+  margin-bottom: 25px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-campus {
+  background: #ffffff;
+  color: #000;
+}
+
+.btn-campus:hover {
+  background: #b3e5fc;
+  transform: scale(1.05);
+}
+
+.btn-mandiri {
+  background: #00e676;
+  color: #000;
+}
+
+.btn-mandiri:hover {
+  background: #00c853;
+  transform: scale(1.05);
+}
+
+.btn-voucher {
+  background: #ffeb3b;
+  color: #000;
+}
+
+.btn-voucher:hover {
+  background: #fdd835;
+  transform: scale(1.05);
+}
+
+.btn-back {
+  background: #ff5252;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.btn-back:hover {
+  background: #e53935;
+}
+
+footer {
+  margin-top: 25px;
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendaftaran LPKN</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HALAMAN PILIH KAMPUS -->
+  <div class="container" id="campusMenu">
+    <h1>Pendaftaran LPKN</h1>
+    <p>Pilih lokasi kampus:</p>
+
+    <div class="button-container">
+      <button class="btn btn-campus" onclick="showRegistrationMenu('Mataram')">LPKN MATARAM</button>
+      <button class="btn btn-campus" onclick="showRegistrationMenu('Gerung')">LPKN GERUNG</button>
+      <button class="btn btn-campus" onclick="showRegistrationMenu('Praya')">LPKN PRAYA</button>
+      <button class="btn btn-campus" onclick="showRegistrationMenu('Selong')">LPKN SELONG</button>
+    </div>
+  </div>
+
+  <!-- HALAMAN PILIH CARA PENDAFTARAN -->
+  <div class="container hidden" id="registrationMenu">
+    <h2 id="campusTitle"></h2>
+    <p>Pilih cara pendaftaran:</p>
+
+    <div class="button-container">
+      <button class="btn btn-mandiri" onclick="openForm('mandiri')">Daftar Mandiri</button>
+      <button class="btn btn-voucher" onclick="openForm('voucher')">Daftar Voucher Beasiswa</button>
+    </div>
+
+    <button class="btn btn-back" onclick="goBack()">⬅ Kembali ke Pilihan Kampus</button>
+  </div>
+
+  <footer>
+    <p>© 2025 LPKN | Sistem Pendaftaran Resmi</p>
+  </footer>
+
+  <script>
+    // Variabel global
+    let selectedCampus = "";
+
+    // Data: Link Google Form + Nomor WhatsApp Admin per kampus
+    const dataKampus = {
+      "Mataram": {
+        mandiri: "https://bit.ly/4oELgG4",
+        voucher: "https://bit.ly/43trpRH",
+        adminWA: "6287722207809"
+      },
+      "Gerung": {
+        mandiri: "https://bit.ly/4oELgG4",
+        voucher: "https://bit.ly/43trpRH",
+        adminWA: "6287722207809"
+      },
+      "Praya": {
+        mandiri: "https://bit.ly/4oELgG4",
+        voucher: "https://bit.ly/43trpRH",
+        adminWA: "6287722207809"
+      },
+      "Selong": {
+        mandiri: "https://bit.ly/4oELgG4",
+        voucher: "https://bit.ly/43trpRH",
+        adminWA: "6287722207809"
+      }
+    };
+
+    // Fungsi navigasi antar menu
+    function showRegistrationMenu(campus) {
+      selectedCampus = campus;
+      document.getElementById("campusMenu").classList.add("hidden");
+      document.getElementById("registrationMenu").classList.remove("hidden");
+      document.getElementById("campusTitle").textContent = "Pendaftaran " + campus;
+    }
+
+    function goBack() {
+      document.getElementById("registrationMenu").classList.add("hidden");
+      document.getElementById("campusMenu").classList.remove("hidden");
+    }
+
+    // Fungsi membuka link form sesuai pilihan
+    function openForm(type) {
+      const campusData = dataKampus[selectedCampus];
+      const formLink = type === "mandiri" ? campusData.mandiri : campusData.voucher;
+      window.open(formLink, "_blank");
+    }
+
+    // Fungsi untuk mengirim pesan WhatsApp ke pengguna
+    // Fungsi ini dijalankan otomatis oleh Google Apps Script setelah form diisi
+    function kirimPesanKePengguna(nama, kampus, jurusan, nomorHP) {
+      const pesan = `Selamat *${nama}* telah diterima di LPKN *${kampus}* dengan jurusan *${jurusan}* 🎉`;
+      const url = `https://wa.me/${nomorHP}?text=${encodeURIComponent(pesan)}`;
+      window.open(url, "_blank");
+    }
+
+    /*
+      Contoh pemanggilan otomatis dari Google Apps Script:
+      kirimPesanKePengguna("Budi", "Mataram", "Administrasi Perkantoran", "6281234567777");
+    */
+  </script>
+
+</body>
+</html>
